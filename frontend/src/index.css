@@ -1,0 +1,797 @@
+@import url("https://fonts.cdnfonts.com/css/general-sans");
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+.action-buttons {
+  display: flex;
+  gap: 10px;
+  margin-bottom: 20px;
+}
+
+.edit-btn,
+.delete-btn,
+.save-btn {
+  padding: 8px 16px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  font-weight: bold;
+}
+
+.edit-btn {
+  background-color: #4CAF50;
+  color: white;
+}
+
+.delete-btn {
+  background-color: #f44336;
+  color: white;
+}
+
+.save-btn {
+  background-color: #2196F3;
+  color: white;
+  margin-top: 10px;
+}
+
+.edit-form {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  max-width: 600px;
+}
+
+.form-group {
+  display: flex;
+  flex-direction: column;
+}
+
+.form-group label {
+  margin-bottom: 5px;
+  font-weight: bold;
+}
+
+.form-group input,
+.form-group textarea {
+  padding: 8px;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+}
+
+.form-group textarea {
+  min-height: 100px;
+  resize: vertical;
+}
+
+.checkbox {
+  flex-direction: row;
+  align-items: center;
+  gap: 10px;
+}
+
+.checkbox input {
+  width: auto;
+}
+body {
+  width: 100dvw;
+  overflow-x: hidden;
+  background-color: #000000;
+  font-family: "circular-web" ;
+}
+body.dark {
+  background-color: #000000;
+  color: white;
+}
+
+@layer base {
+  @font-face {
+    font-family: "circular-web";
+    src: url("/fonts/circularweb-book.woff2") format("woff2");
+  }
+
+  @font-face {
+    font-family: "general";
+    src: url("/fonts/general.woff2") format("woff2");
+  }
+
+  @font-face {
+    font-family: "robert-medium";
+    src: url("/fonts/robert-medium.woff2") format("woff2");
+  }
+
+  @font-face {
+    font-family: "robert-regular";
+    src: url("/fonts/robert-regular.woff2") format("woff2");
+  }
+  @font-face {
+     
+    font-weight: bold;
+    font-style: normal;
+    font-display: swap;  
+  }
+  
+}
+
+@layer utilities {
+  .border-hsla {
+    @apply border border-white/20;
+  }
+
+  .nav-hover-btn {
+    @apply relative ms-10 font-general text-xs uppercase text-blue-50 after:absolute after:-bottom-0.5 after:left-0 after:h-[2px] after:w-full after:origin-bottom-right after:scale-x-0 after:bg-[#64FF07] after:transition-transform after:duration-300 after:ease-[cubic-bezier(0.65_0.05_0.36_1)] hover:after:origin-bottom-left hover:after:scale-x-100 dark:after:bg-white cursor-pointer;
+  }
+
+  .floating-nav {
+    @apply bg-black rounded-lg border;
+  }
+
+  .absolute-center {
+    @apply absolute top-1/2 left-1/2 translate-x-[-50%] translate-y-[-50%];
+  }
+
+  .flex-center {
+    @apply flex justify-center items-center;
+  }
+
+  .mask-clip-path {
+    clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%);
+  }
+
+  .special-font b {
+    font-family: "Zentry";
+    font-feature-settings: "ss01" on;
+  }
+
+  .hero-heading {
+    @apply uppercase font-zentry font-black text-5xl sm:right-10 sm:text-7xl md:text-9xl lg:text-[12rem];
+  }
+
+  .about-subtext {
+    @apply absolute bottom-[-80dvh] left-1/2 w-full max-w-96 -translate-x-1/2 text-center font-circular-web text-lg md:max-w-[34rem];
+  }
+
+  .about-image {
+    @apply absolute left-1/2 top-0 z-20 h-[60vh] w-96 origin-center -translate-x-1/2 overflow-hidden rounded-3xl md:w-[30vw];
+  }
+
+  .animated-title {
+    @apply flex flex-col gap-1 text-7xl uppercase leading-[.8] text-white sm:px-32 md:text-[6rem];
+  }
+
+  .animated-word {
+    @apply special-font font-zentry font-black opacity-0;
+    transform: translate3d(10px, 51px, -60px) rotateY(60deg) rotateX(-40deg);
+    transform-origin: 50% 50% -150px !important;
+    will-change: opacity, transform;
+  }
+
+  .bento-tilt_1 {
+    @apply relative border-hsla col-span-2 overflow-hidden rounded-md transition-transform duration-300 ease-out;
+  }
+
+  .bento-tilt_2 {
+    @apply relative col-span-1 row-span-1 overflow-hidden rounded-md transition-transform duration-300 ease-out;
+  }
+
+  .bento-title {
+    @apply uppercase md:text-6xl text-4xl font-black font-zentry;
+  }
+
+  .story-img-container {
+    @apply relative md:h-dvh h-[90vh] w-full;
+    filter: url("#flt_tag");
+  }
+
+  .story-img-mask {
+    @apply absolute left-0 top-0 size-full overflow-hidden md:left-[20%] md:top-[-10%] md:size-4/5;
+    clip-path: polygon(0% 0, 100% 21%, 100% 73%, 0% 100%);
+  }
+
+  .story-img-content {
+    @apply absolute w-full md:h-dvh h-[50dvh] opacity-100 left-10 top-16 md:left-0 md:top-10 lg:left-[-300px] lg:top-[-100px];
+    transform: translate3d(0, 0, 0) rotateX(0) rotateY(0) rotateZ(0) scale(1);
+  }
+
+  .gallery-img-container {
+    @apply size-64 overflow-hidden bg-violet-300;
+  }
+
+  .gallery-img {
+    @apply size-full bg-cover;
+  }
+
+  .gallery-img-4 {
+    @apply sm:size-80 md:h-96 md:w-[25rem] rounded-lg;
+  }
+
+  .sword-man-clip-path {
+    clip-path: polygon(16% 0, 89% 15%, 75% 100%, 0 97%);
+  }
+
+  .contact-clip-path-1 {
+    clip-path: polygon(25% 0%, 74% 0, 69% 64%, 34% 73%);
+  }
+
+  .contact-clip-path-2 {
+    clip-path: polygon(29% 15%, 85% 30%, 50% 100%, 10% 64%);
+  }
+}
+
+.indicator-line {
+  @apply h-1 w-px rounded-full bg-white transition-all duration-200 ease-in-out;
+}
+
+.indicator-line.active {
+  animation: indicator-line 0.5s ease infinite;
+  animation-delay: calc(var(--animation-order) * 0.1s);
+}
+
+@keyframes indicator-line {
+  0% {
+    height: 4px;
+    transform: translateY(-0px);
+  }
+  50% {
+    height: 16px;
+    transform: translateY(-4px);
+  }
+  100% {
+    height: 4px;
+    transform: translateY(-0px);
+  }
+}
+
+/* From Uiverse.io by G4b413l */
+/* https://uiverse.io/G4b413l/tidy-walrus-92 */
+.three-body {
+  --uib-size: 35px;
+  --uib-speed: 0.8s;
+  --uib-color: #5d3fd3;
+  position: relative;
+  display: inline-block;
+  height: var(--uib-size);
+  width: var(--uib-size);
+  animation: spin78236 calc(var(--uib-speed) * 2.5) infinite linear;
+}
+
+.three-body__dot {
+  position: absolute;
+  height: 100%;
+  width: 30%;
+}
+
+.three-body__dot:after {
+  content: "";
+  position: absolute;
+  height: 0%;
+  width: 100%;
+  padding-bottom: 100%;
+  background-color: var(--uib-color);
+  border-radius: 50%;
+}
+
+.three-body__dot:nth-child(1) {
+  bottom: 5%;
+  left: 0;
+  transform: rotate(60deg);
+  transform-origin: 50% 85%;
+}
+
+.three-body__dot:nth-child(1)::after {
+  bottom: 0;
+  left: 0;
+  animation: wobble1 var(--uib-speed) infinite ease-in-out;
+  animation-delay: calc(var(--uib-speed) * -0.3);
+}
+
+.three-body__dot:nth-child(2) {
+  bottom: 5%;
+  right: 0;
+  transform: rotate(-60deg);
+  transform-origin: 50% 85%;
+}
+
+.three-body__dot:nth-child(2)::after {
+  bottom: 0;
+  left: 0;
+  animation: wobble1 var(--uib-speed) infinite calc(var(--uib-speed) * -0.15)
+    ease-in-out;
+}
+
+.three-body__dot:nth-child(3) {
+  bottom: -5%;
+  left: 0;
+  transform: translateX(116.666%);
+}
+
+.three-body__dot:nth-child(3)::after {
+  top: 0;
+  left: 0;
+  animation: wobble2 var(--uib-speed) infinite ease-in-out;
+}
+
+@keyframes spin78236 {
+  0% {
+    transform: rotate(0deg);
+  }
+
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes wobble1 {
+  0%,
+  100% {
+    transform: translateY(0%) scale(1);
+    opacity: 1;
+  }
+
+  50% {
+    transform: translateY(-66%) scale(0.65);
+    opacity: 0.8;
+  }
+}
+
+@keyframes wobble2 {
+  0%,
+  100% {
+    transform: translateY(0%) scale(1);
+    opacity: 1;
+  }
+
+  50% {
+    transform: translateY(66%) scale(0.65);
+    opacity: 0.8;
+  }
+}
+.navigation {
+  position: fixed;
+  width: 300px;
+  height: 100%;
+  background: var(--blue);
+  border-left: 10px solid var(--blue);
+  transition: 0.5s;
+  overflow: hidden;
+}
+.navigation.active {
+  width: 80px;
+}
+
+.navigation ul {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+}
+
+.navigation ul li {
+  position: relative;
+  width: 100%;
+  list-style: none;
+  border-top-left-radius: 30px;
+  border-bottom-left-radius: 30px;
+}
+
+.navigation ul li:hover,
+.navigation ul li.hovered {
+  background-color: var(--white);
+}
+
+.navigation ul li:nth-child(1) {
+  margin-bottom: 40px;
+  pointer-events: none;
+}
+
+.navigation ul li a {
+  position: relative;
+  display: block;
+  width: 100%;
+  display: flex;
+  text-decoration: none;
+  color: var(--white);
+}
+.navigation ul li:hover a,
+.navigation ul li.hovered a {
+  color: var(--blue);
+}
+
+.navigation ul li a .icon {
+  position: relative;
+  display: block;
+  min-width: 60px;
+  height: 60px;
+  line-height: 75px;
+  text-align: center;
+}
+.navigation ul li a .icon ion-icon {
+  font-size: 1.75rem;
+}
+
+.navigation ul li a .title {
+  position: relative;
+  display: block;
+  padding: 0 10px;
+  height: 60px;
+  line-height: 60px;
+  text-align: start;
+  white-space: nowrap;
+}
+
+/* --------- curve outside ---------- */
+.navigation ul li:hover a::before,
+.navigation ul li.hovered a::before {
+  content: "";
+  position: absolute;
+  right: 0;
+  top: -50px;
+  width: 50px;
+  height: 50px;
+  background-color: transparent;
+  border-radius: 50%;
+  box-shadow: 35px 35px 0 10px var(--white);
+  pointer-events: none;
+}
+.navigation ul li:hover a::after,
+.navigation ul li.hovered a::after {
+  content: "";
+  position: absolute;
+  right: 0;
+  bottom: -50px;
+  width: 50px;
+  height: 50px;
+  background-color: transparent;
+  border-radius: 50%;
+  box-shadow: 35px -35px 0 10px var(--white);
+  pointer-events: none;
+}
+
+/* ===================== Main ===================== */
+.main {
+  position: absolute;
+  width: calc(100% - 300px);
+  left: 300px;
+  min-height: 100vh;
+  background: var(--white);
+  transition: 0.5s;
+}
+.main.active {
+  width: calc(100% - 80px);
+  left: 80px;
+}
+
+.topbar {
+  width: 100%;
+  height: 60px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 10px;
+}
+
+.toggle {
+  position: relative;
+  width: 60px;
+  height: 60px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 2.5rem;
+  cursor: pointer;
+}
+
+.search {
+  position: relative;
+  width: 400px;
+  margin: 0 10px;
+}
+
+.search label {
+  position: relative;
+  width: 100%;
+}
+
+.search label input {
+  width: 100%;
+  height: 40px;
+  border-radius: 40px;
+  padding: 5px 20px;
+  padding-left: 35px;
+  font-size: 18px;
+  outline: none;
+  border: 1px solid var(--black2);
+}
+
+.search label ion-icon {
+  position: absolute;
+  top: 0;
+  left: 10px;
+  font-size: 1.2rem;
+}
+
+.user {
+  position: relative;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  overflow: hidden;
+  cursor: pointer;
+}
+
+.user img {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+/* ======================= Cards ====================== */
+.cardBox {
+  position: relative;
+  width: 100%;
+  padding: 20px;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  grid-gap: 30px;
+}
+
+.cardBox .card {
+  position: relative;
+  background: var(--white);
+  padding: 30px;
+  border-radius: 20px;
+  display: flex;
+  justify-content: space-between;
+  cursor: pointer;
+  box-shadow: 0 7px 25px rgba(0, 0, 0, 0.08);
+}
+
+.cardBox .card .numbers {
+  position: relative;
+  font-weight: 500;
+  font-size: 2.5rem;
+  color: var(--blue);
+}
+
+.cardBox .card .cardName {
+  color: var(--black2);
+  font-size: 1.1rem;
+  margin-top: 5px;
+}
+
+.cardBox .card .iconBx {
+  font-size: 3.5rem;
+  color: var(--black2);
+}
+
+.cardBox .card:hover {
+  background: var(--blue);
+}
+.cardBox .card:hover .numbers,
+.cardBox .card:hover .cardName,
+.cardBox .card:hover .iconBx {
+  color: var(--white);
+}
+
+/* ================== Order Details List ============== */
+.details {
+  position: relative;
+  width: 100%;
+  padding: 20px;
+  display: grid;
+  grid-template-columns: 2fr 1fr;
+  grid-gap: 30px;
+  /* margin-top: 10px; */
+}
+
+.details .recentOrders {
+  position: relative;
+  display: grid;
+  min-height: 500px;
+  background: var(--white);
+  padding: 20px;
+  box-shadow: 0 7px 25px rgba(0, 0, 0, 0.08);
+  border-radius: 20px;
+}
+
+.details .cardHeader {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+}
+.cardHeader h2 {
+  font-weight: 600;
+  color: var(--blue);
+}
+.cardHeader .btn {
+  position: relative;
+  padding: 5px 10px;
+  background: var(--blue);
+  text-decoration: none;
+  color: var(--white);
+  border-radius: 6px;
+}
+
+.details table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 10px;
+}
+.details table thead td {
+  font-weight: 600;
+}
+.details .recentOrders table tr {
+  color: var(--black1);
+  border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+}
+.details .recentOrders table tr:last-child {
+  border-bottom: none;
+}
+.details .recentOrders table tbody tr:hover {
+  background: var(--blue);
+  color: var(--white);
+}
+.details .recentOrders table tr td {
+  padding: 10px;
+}
+.details .recentOrders table tr td:last-child {
+  text-align: end;
+}
+.details .recentOrders table tr td:nth-child(2) {
+  text-align: end;
+}
+.details .recentOrders table tr td:nth-child(3) {
+  text-align: center;
+}
+.status.delivered {
+  padding: 2px 4px;
+  background: #8de02c;
+  color: var(--white);
+  border-radius: 4px;
+  font-size: 14px;
+  font-weight: 500;
+}
+.status.pending {
+  padding: 2px 4px;
+  background: #e9b10a;
+  color: var(--white);
+  border-radius: 4px;
+  font-size: 14px;
+  font-weight: 500;
+}
+.status.return {
+  padding: 2px 4px;
+  background: #f00;
+  color: var(--white);
+  border-radius: 4px;
+  font-size: 14px;
+  font-weight: 500;
+}
+.status.inProgress {
+  padding: 2px 4px;
+  background: #1795ce;
+  color: var(--white);
+  border-radius: 4px;
+  font-size: 14px;
+  font-weight: 500;
+}
+
+.recentCustomers {
+  position: relative;
+  display: grid;
+  min-height: 500px;
+  padding: 20px;
+  background: var(--white);
+  box-shadow: 0 7px 25px rgba(0, 0, 0, 0.08);
+  border-radius: 20px;
+}
+.recentCustomers .imgBx {
+  position: relative;
+  width: 40px;
+  height: 40px;
+  border-radius: 50px;
+  overflow: hidden;
+}
+.recentCustomers .imgBx img {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+.recentCustomers table tr td {
+  padding: 12px 10px;
+}
+.recentCustomers table tr td h4 {
+  font-size: 16px;
+  font-weight: 500;
+  line-height: 1.2rem;
+}
+.recentCustomers table tr td h4 span {
+  font-size: 14px;
+  color: var(--black2);
+}
+.recentCustomers table tr:hover {
+  background: var(--blue);
+  color: var(--white);
+}
+.recentCustomers table tr:hover td h4 span {
+  color: var(--white);
+}
+
+/* ====================== Responsive Design ========================== */
+@media (max-width: 991px) {
+  .navigation {
+    left: -300px;
+  }
+  .navigation.active {
+    width: 300px;
+    left: 0;
+  }
+  .main {
+    width: 100%;
+    left: 0;
+  }
+  .main.active {
+    left: 300px;
+  }
+  .cardBox {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 768px) {
+  .details {
+    grid-template-columns: 1fr;
+  }
+  .recentOrders {
+    overflow-x: auto;
+  }
+  .status.inProgress {
+    white-space: nowrap;
+  }
+}
+
+@media (max-width: 480px) {
+  .cardBox {
+    grid-template-columns: repeat(1, 1fr);
+  }
+  .cardHeader h2 {
+    font-size: 20px;
+  }
+  .user {
+    min-width: 40px;
+  }
+  .navigation {
+    width: 100%;
+    left: -100%;
+    z-index: 1000;
+  }
+  .navigation.active {
+    width: 100%;
+    left: 0;
+  }
+  .toggle {
+    z-index: 10001;
+  }
+  .main.active .toggle {
+    color: #fff;
+    position: fixed;
+    right: 0;
+    left: initial;
+  }
+}
+
+.no-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+.no-scrollbar {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+  
